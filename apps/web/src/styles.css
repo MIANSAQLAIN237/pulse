@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --color-cream: #f6f0e4;
+  --color-paper: #fffbf3;
+  --color-ink: #1c140f;
+  --color-muted: #6a5b50;
+  --color-coral: #e23d2a;
+  --color-coral-dark: #c22f1f;
+  --color-gold: #e8a317;
+}
+
+html {
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  min-height: 100dvh;
+  background-color: #f6f0e4;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: #1c140f;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(28, 20, 15, 0.06) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+#root {
+  min-height: 100dvh;
+  overflow-x: clip;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.pulse-card {
+  border: 2.5px solid #1c140f;
+  background: #fffbf3;
+  box-shadow: 4px 4px 0 #1c140f;
+}
+
+@media (min-width: 640px) {
+  .pulse-card {
+    box-shadow: 6px 6px 0 #1c140f;
+  }
+}
+
+.pulse-ticket {
+  position: relative;
+  border: 2.5px solid #1c140f;
+  background:
+    radial-gradient(circle at 0 28px, transparent 10px, #fffbf3 11px) left,
+    #fffbf3;
+  box-shadow: 7px 7px 0 #1c140f;
+}
+
+.pulse-ticket::before,
+.pulse-ticket::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 14px;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #f6f0e4 7px, transparent 8px);
+  background-size: 22px 14px;
+}
+
+.pulse-ticket::before {
+  top: -8px;
+  background-position: 8px 0;
+}
+
+.pulse-ticket::after {
+  bottom: -8px;
+  background-position: 8px 0;
+}

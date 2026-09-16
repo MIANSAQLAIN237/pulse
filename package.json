@@ -1,0 +1,30 @@
+{
+  "name": "pulse",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Live meeting polls with real-time results, QR join, and one-vote-per-person.",
+  "workspaces": [
+    "apps/server",
+    "apps/web",
+    "packages/shared"
+  ],
+  "scripts": {
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "dev": "concurrently -n server,web -c cyan,magenta \"npm run dev -w @pulse/server\" \"npm run dev -w @pulse/web\"",
+    "build": "npm run build -w @pulse/shared && npm run build -w @pulse/server && npm run build -w @pulse/web",
+    "test": "npm run test -w @pulse/shared && npm run test -w @pulse/server",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "smoke": "node scripts/smoke.mjs",
+    "demo:video": "node scripts/record-demo.mjs"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "playwright-core": "^1.63.0",
+    "typescript": "^5.8.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
